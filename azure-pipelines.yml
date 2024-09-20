@@ -7,11 +7,17 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- task: UiPathTest@4
+  inputs:
+    testTarget: 'TestSet'
+    orchestratorConnection: 'TestManagerConnection'
+    folderName: 'My Workspace'
+    attachRobotLogs: true
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
